@@ -50,7 +50,7 @@ public class ListFragment extends Fragment {
                         JSONArray jsonArray = new JSONArray(json);
                         for(int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            if(jsonObject.getString("name") == "null" || jsonObject.getString("name").isEmpty()) {
+                            if(jsonObject.getString("name").equals("null") || jsonObject.getString("name").isEmpty()) {
                                 continue;
                             }
                             else {
@@ -115,8 +115,8 @@ public class ListFragment extends Fragment {
     private class DataHolder extends RecyclerView.ViewHolder {
 
         private Data mData;
-        private TextView mListIdTextView;
-        private TextView mNameTextView;
+        private final TextView mListIdTextView;
+        private final TextView mNameTextView;
 
         public DataHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_data, parent, false));
@@ -133,7 +133,7 @@ public class ListFragment extends Fragment {
 
     private class DataAdapter extends RecyclerView.Adapter<DataHolder> {
 
-        private List<Data> mData;
+        private final List<Data> mData;
         public DataAdapter(List<Data> data) {
             mData = data;
         }
